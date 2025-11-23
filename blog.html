@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KernelMods.ps3 Blog - Latest News on PS3 Custom Firmware, Tools, and Exploits">
+    <title>Blog - KernelMods.ps3</title>
+    <style>
+        /* Vyper-style: ultra-lightweight, zero bloat, pure 2017-2025 scene */
+        body,html{margin:0;padding:0;background:#000;color:#0ff;font-family:"Courier New",monospace;font-size:15px;line-height:1.5}
+        a{color:#0ff;text-decoration:underline}
+        a:hover{color:#fff}
+        table{border-collapse:collapse;width:100%;margin:20px 0}
+        td,th{border:1px solid #0ff;padding:8px;text-align:center}
+        th{background:#001111}
+        pre{font-family:inherit;background:#000;border:1px dashed #0ff;padding:10px;overflow-x:auto}
+       
+        /* Classic Vyper header */
+        .header{text-align:center;padding:20.5px;background:#000;border-bottom:3px double #0ff}
+        .logo{font-size:48px;letter-spacing:8px;font-weight:bold;text-shadow:0 0 10px #0ff}
+        .domain{font-size:18px;letter-spacing:4px;margin-top:-10px;color:#0cf}
+       
+        /* Warning box - exact replica */
+        .warning{background:#000;border:2px solid #0ff;padding:15px;margin:20px auto;max-width:900px;text-align:center;
+                 box-shadow:0 0 15px #0ff;animation:glow 2s infinite alternate}
+        @keyframes glow{from{box-shadow:0 0 15px #0ff}to{box-shadow:0 0 25px #0ff}}
+       
+        /* Buttons - pure text links like original vyperxploit.com */
+        .btn{display:inline-block;padding:12px 30px;margin:10px;background:#000;border:2px solid #0ff;
+             text-transform:uppercase;letter-spacing:2px;font-weight:bold;cursor:pointer}
+        .btn:hover{background:#0ff;color:#000;animation:none}
+       
+        .container{max-width:1000px;margin:0 auto;padding:20px}
+        .box{border:1px solid #0ff;padding:20px;margin:25px 0;background:#000}
+        .footer{text-align:center;padding:30px;border-top:2px solid #0ff;margin-top:50px;font-size:13px;color:#0af}
+        
+        /* Simple nav for site pages */
+        .nav{text-align:center;margin:10px 0}
+        .nav a{margin:0 15px;text-decoration:none}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Kernel Mods</div>
+        <div class="domain">www.team-trixen.github.io/kernelmods.ps3/ - Official Domain</div>
+        <div class="nav">
+            <a href="index.html">Home</a>
+        </div>
+    </div>
+    <div class="container">
+        <h2 style="text-align:center;color:#0ff;text-shadow:0 0 10px">Blog</h2>
+        <div id="blog-posts"></div>
+    </div>
+    <div class="footer">
+        KernelMods • GoldenFields • SkyDreamModZ • GianCarlo • ArabicGamer12<br>
+    </div>
+    <!-- Lightweight matrix - 100% original PS3Xploit style (no heavy canvas) -->
+    <script>
+        setInterval(() => {
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            let drop = '';
+            for(let i = 0; i < 40; i++) drop += chars[Math.floor(Math.random()*chars.length)];
+            console.log('%c'+drop,'color:#0ff');
+        }, 100);
+    </script>
+    <!-- Script to fetch and display blog posts from /Blogs/ folder -->
+    <script>
+        // Add your post files here with URLs and dates (for sorting). Dates in YYYY-MM-DD format.
+        // Each post file in /Blogs/ should contain the inner HTML for the .box (e.g., <h3>Title</h3><p>Date</p><p>Summary</p><div><a class="btn">Read More</a></div>)
+        const posts = [
+            { url: 'Blogs/xeon-4921-release.html', date: '2025-11-23' },
+            { url: 'Blogs/install-hcfw-super-slim.html', date: '2025-11-15' },
+            { url: 'Blogs/top-homebrew-2025.html', date: '2025-10-30' }
+            // Add more posts as you create files in /Blogs/
+        ];
+
+        // Sort by date descending (latest first)
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        // Fetch and append each post
+        const blogContainer = document.getElementById('blog-posts');
+        posts.forEach(post => {
+            fetch(post.url)
+                .then(response => {
+                    if (!response.ok) throw new Error('Post not found');
+                    return response.text();
+                })
+                .then(html => {
+                    const div = document.createElement('div');
+                    div.className = 'box';
+                    div.innerHTML = html;
+                    blogContainer.appendChild(div);
+                })
+                .catch(error => console.error('Error loading post:', error));
+        });
+    </script>
+</body>
+</html>
